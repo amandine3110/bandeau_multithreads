@@ -7,7 +7,7 @@ public class ExampleScenario {
      *
      * @param args les "arguments de ligne de commande", transmis au lancement du programme
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         String message;
         if (args.length > 0) // J'ai au moins un paramètre
         {
@@ -20,7 +20,7 @@ public class ExampleScenario {
         instance.exemple(message);
     }
 
-    public void exemple(String message) {
+    public void exemple(String message) throws InterruptedException {
         // On cree un scenario
         Scenario s = new Scenario();
         // On lui ajoute des effets
@@ -34,7 +34,7 @@ public class ExampleScenario {
         s.addEffect(new Rotate("2 tours à droite", 180, 4000, true), 2);
         s.addEffect(new Rotate("2 tours à gauche", 180, 4000, false), 2);
         // On cree le bandeau
-        Bandeau b = new Bandeau();
+        BandeauLock b = new BandeauLock();
         b.setMessage(message);
         b.sleep(2000);
         // On joue le scenario sur le bandeau
